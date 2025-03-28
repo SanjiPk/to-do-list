@@ -6,14 +6,14 @@ import db.exception.*;
 public class Database {
 
     public static ArrayList<Entity> entities = new ArrayList<>();
-    private static int id = 1;
+    private static int index = 1;
 
     private Database(){}
 
     public static void add(Entity e) {
+        e.id = index;
         entities.add(e.copy());
-        e.id = id;
-        id++;
+        index++;
     }
 
     public static Entity get(int id) {
