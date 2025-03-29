@@ -1,6 +1,6 @@
 package example;
 
-import java.sql.Date;
+import java.util.Date;
 
 import db.Entity;
 import db.Trackable;
@@ -41,6 +41,7 @@ public class Document extends Entity implements Trackable {
         Document documentCopy = new Document(content);
         documentCopy.creationDate = creationDate;
         documentCopy.lastModificationDate = lastModificationDate;
+        documentCopy.id = id;
 
         return documentCopy;
     }
