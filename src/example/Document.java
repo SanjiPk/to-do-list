@@ -8,8 +8,6 @@ import db.Trackable;
 public class Document extends Entity implements Trackable {
 
     public String content;
-    private Date creationDate;
-    private Date lastModificationDate;
     public static final int Document_ENTITY_CODE = 12;
 
     public Document(String content) {
