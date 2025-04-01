@@ -2,7 +2,7 @@ package todo.entity;
 
 import db.Entity;
 
-public class Step extends Entity{
+public class Step extends Entity {
 
     public String title;
     public Status status;
@@ -13,13 +13,17 @@ public class Step extends Entity{
         NotStarted, Completed;
     }
 
+    public Step(String title, int taskRef) {
+        this.title = title;
+        this.taskRef = taskRef;
+        this.status = Status.NotStarted;
+    }
+
     @Override
     public Entity copy() {
-        Step stepCopy = new Step();
+        Step stepCopy = new Step(this.title, this.taskRef);
         stepCopy.id = id;
-        stepCopy.title = title;
         stepCopy.status = status;
-        stepCopy.taskRef = taskRef;
         stepCopy.creationDate = creationDate;
         stepCopy.lastModificationDate = lastModificationDate;
 
