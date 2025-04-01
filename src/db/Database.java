@@ -12,9 +12,10 @@ public class Database {
     private static int index = 1;
     private static HashMap<Integer, Validator> validators = new HashMap<>();
 
-    private Database() {}
+    private Database() {
+    }
 
-    public static void add(Entity e) {
+    public static void add(Entity e) throws InvalidEntityException {
         Validator validator = validators.get(e.getEntityCode());
 
         if (e instanceof Trackable) {
@@ -22,17 +23,32 @@ public class Database {
             ((Trackable) e).setCreationDate(new Date());
             ((Trackable) e).setLastModificationDate(new Date());
             entities.add(e.copy());
-            index++;
-            return;
-        }
-
-        try {
+        } else {
             validator.validate(e);
             e.id = index;
             entities.add(e.copy());
-            index++;
-        } catch (InvalidEntityException exception) {
-            System.out.println(exception.getMessage());
+        }
+        index++;
+    }
+
+    public static void update(Entity e) throws InvalidEntityException {
+
+        Validator validator = validators.get(e.getEntityCode());
+        int entityIndex = -1;
+
+        for (int i = 0; i < entities.size(); i++)
+            if (entities.get(i).id == e.id)
+                entityIndex = i;
+
+        if (entityIndex == -1)
+            throw new EntityNotFoundException();
+
+        if (e instanceof Trackable) {
+            ((Trackable) e).setLastModificationDate(new Date());
+            entities.set(entityIndex, e.copy());
+        } else {
+            validator.validate(e);
+            entities.set(entityIndex, e.copy());
         }
     }
 
@@ -50,31 +66,6 @@ public class Database {
                 return;
             }
         throw new EntityNotFoundException();
-    }
-
-    public static void update(Entity e) {
-        Validator validator = validators.get(e.getEntityCode());
-        int entityIndex = -1;
-
-        for (int i = 0; i < entities.size(); i++)
-            if (entities.get(i).id == e.id)
-                entityIndex = i;
-
-        if (entityIndex == -1)
-            throw new EntityNotFoundException();
-
-        if (e instanceof Trackable) {
-            ((Trackable) e).setLastModificationDate(new Date());
-            entities.set(entityIndex, e.copy());
-            return;
-        }
-
-        try {
-            validator.validate(e);
-            entities.set(entityIndex, e.copy());
-        } catch (InvalidEntityException exception) {
-            System.out.println(exception.getMessage());
-        }
     }
 
     public static void registerValidator(int entityCode, Validator validator) {
