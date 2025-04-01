@@ -4,7 +4,7 @@ import db.Entity;
 import db.Trackable;
 import java.util.Date;
 
-public class Task extends Entity implements Trackable{
+public class Task extends Entity implements Trackable {
 
     public enum Status {
         Completed, InProgress, NotStarted;
@@ -15,24 +15,27 @@ public class Task extends Entity implements Trackable{
     public Date dueDate;
     public Status status;
     public static final int Task_ENTITY_CODE = 16;
-    
 
     @Override
     public void setCreationDate(Date date) {
         creationDate = date;
     }
+
     @Override
     public Date getCreationDate() {
         return creationDate;
     }
+
     @Override
     public void setLastModificationDate(Date date) {
         lastModificationDate = date;
     }
+
     @Override
     public Date getLastModificationDate() {
         return lastModificationDate;
     }
+
     @Override
     public Entity copy() {
         Task taskCopy = new Task();
@@ -46,6 +49,7 @@ public class Task extends Entity implements Trackable{
 
         return taskCopy;
     }
+
     @Override
     public int getEntityCode() {
         return Task_ENTITY_CODE;
