@@ -16,6 +16,13 @@ public class Task extends Entity implements Trackable {
     public Status status;
     public static final int Task_ENTITY_CODE = 16;
 
+    public Task(String title, String description, Date dueDate) {
+        this.title = title;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.status = Status.NotStarted;
+    }
+
     @Override
     public void setCreationDate(Date date) {
         creationDate = date;
@@ -38,11 +45,9 @@ public class Task extends Entity implements Trackable {
 
     @Override
     public Entity copy() {
-        Task taskCopy = new Task();
+        Task taskCopy = new Task(title, description, dueDate);
         taskCopy.id = id;
-        taskCopy.title = title;
         taskCopy.status = status;
-        taskCopy.description = description;
         taskCopy.creationDate = creationDate;
         taskCopy.lastModificationDate = lastModificationDate;
         taskCopy.dueDate = dueDate;

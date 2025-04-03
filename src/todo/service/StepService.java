@@ -8,9 +8,10 @@ import todo.entity.Step;
 
 public class StepService {
 
-    public static void saveStep(int taskRef, String title) throws InvalidEntityException {
+    public static int saveStep(int taskRef, String title) throws InvalidEntityException {
         Step step = new Step(title, taskRef);
         Database.add(step);
+        return step.id;
     }
 
     public static void deleteStep(Step step) {
