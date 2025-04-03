@@ -48,6 +48,7 @@ git clone https://github.com/your-username/todo-list-manager.git
 cd todo-list-manager
 ```
 Replace your-username with your GitHub username and todo-list-manager with your repository name.
+
 2. Compile the Project: Using a terminal:
 ```bash
 javac src/*.java src/db/*.java src/db/exception/*.java src/todo/entity/*.java src/todo/service/*.java src/todo/validator/*.java
