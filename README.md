@@ -53,6 +53,7 @@ Replace your-username with your GitHub username and todo-list-manager with your 
 javac src/*.java src/db/*.java src/db/exception/*.java src/todo/entity/*.java src/todo/service/*.java src/todo/validator/*.java
 ```
 Or use your IDE’s build tools.
+
 3. Run the Application:
 ```bash
 java -cp src Main
