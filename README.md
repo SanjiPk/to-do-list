@@ -1,4 +1,4 @@
-#To-Do List Manager
+# To-Do List Manager
 
 A simple command-line application built in Java to manage tasks and their associated steps. This project uses an in-memory database to store tasks and steps, allowing users to create, update, delete, and retrieve them with a focus on clean architecture and exception handling.
 Features
@@ -12,7 +12,7 @@ Features
     In-Memory Database: Stores entities with unique IDs, creation dates, and modification dates.
     Command-Line Interface: Interactive console for managing tasks and steps.
 
-#Project Structure
+# Project Structure
 ```text
 src/
 ├── db/
@@ -57,7 +57,7 @@ Or use your IDE’s build tools.
 ```bash
 java -cp src Main
 ```
-#Usage
+# Usage
 
 The application runs in the console and accepts commands until you type exit. Below are the supported commands with examples:
 #Add a Task
@@ -72,7 +72,7 @@ Output:
 Task saved successfully.
 ID: 1
 ```
-#Add a Step
+# Add a Step
 ```text
 add step
 TaskID: 1
@@ -84,7 +84,7 @@ Step saved successfully.
 ID: 2
 Creation Date: Thu Apr 03 12:34:56 GMT 2025
 ```
-#Update task
+# Update task
 ```text
 Step saved successfully.
 ID: 2
